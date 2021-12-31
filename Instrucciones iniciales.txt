@@ -1,0 +1,15 @@
+En lugar de Filezilla yo voy a usarle desde xampp ya que le tengo instalado y configurado.
+
+Dentro de las opciones del filezilla debemos de crear un usuario con su contraseña y darle privilegios
+
+Tambien debemos crear una carperta llamada subidas y otra descargas, que yo en este caso las he creado en el disco D: de mi ordenador.
+
+En eclipse debemos usar la libreria commons-net-3.2.jar que he facilitado en el archivo zip.
+
+Despues ya podemos iniciar el programa y hacer pruebas previamente teniendo algun archivo creado en descargas y subidas si queremos.
+
+No obstante debo recordar que en el trayecto C:\xampp\htdocs\usuario1 tengo un arbol de directorios creado con miscosas
+	miscosas2
+	miscosas3
+	roberto
+y archivos sueltos. 
