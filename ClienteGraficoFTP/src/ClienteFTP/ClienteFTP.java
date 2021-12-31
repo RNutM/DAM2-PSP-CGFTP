@@ -1,8 +1,5 @@
 package ClienteFTP;
-/**
- * @author Robert G
- *
- */
+
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -38,7 +35,11 @@ import org.apache.commons.net.ftp.FTPFile;
 
 @SuppressWarnings("serial")
 public class ClienteFTP extends JFrame implements ActionListener {
-
+	/**
+	 * Programa Cliente FTP Gráfico
+	 * 
+	 * @author Robert G
+	 */
 	static FTPClient cliente;
 
 	private JPanel contentPane;
@@ -199,12 +200,12 @@ public class ClienteFTP extends JFrame implements ActionListener {
 				String servFTP = txtServidor.getText();
 
 				usuario = txtUsuario.getText();
+				@SuppressWarnings("deprecation")
 				String clave = txtClave.getText();
 
 				try {
 					cliente.connect(servFTP);
 				} catch (IOException e2) {
-					// TODO Auto-generated catch block
 					textArea.append("ERROR DE CONEXIÓN\n");
 					System.out.println("ERROR DE CONEXIÓN");
 					textArea.append("Arranca el servicio FTP e intenta conectar de nuevo\n");
@@ -214,7 +215,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 				try {
 					login = cliente.login(usuario, clave);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					textArea.append("La conexión no esta abierta\n");
 					System.err.println("La conexión no esta abierta");
 					// e1.printStackTrace();
@@ -229,7 +229,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					try {// Nos situamos en la raiz del equipo remoto
 						cliente.changeWorkingDirectory(raiz);
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					try {
@@ -237,14 +236,12 @@ public class ClienteFTP extends JFrame implements ActionListener {
 						textArea.append("(RAÍZ) " + cliente.printWorkingDirectory() + "\n");
 						System.out.println("Directorio actual: " + cliente.printWorkingDirectory());
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} // pwd en cmd
 					ficheros = null;
 					try {
 						ficheros = cliente.listFiles();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					textArea.append("Total Ficheros/Directorios en " + raiz + ": " + ficheros.length + "\n");
@@ -254,7 +251,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					try {
 						verficheros(ficheros);// Voy al método externo
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					textArea.append("***********FIN DEL LISTADO***********\n");
@@ -268,7 +264,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					try {
 						cliente.disconnect();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					JOptionPane.showMessageDialog(null, "Servidor, Usuario o clave incorrectos", "Error",
@@ -286,7 +281,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 						btnConexion.setText("Conectar");
 						logout = cliente.logout();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					if (logout) {
@@ -301,7 +295,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					try {
 						cliente.disconnect();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					textArea.append("Conexión finalizada\n");
@@ -323,7 +316,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 				try {
 					cliente.setFileType(FTP.BINARY_FILE_TYPE);// que permite ficheros de cualquier tipo
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				// Seleccionamos el fichero que queremos subir
@@ -343,7 +335,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 						in = new BufferedInputStream(new FileInputStream(selectedFile));
 
 					} catch (FileNotFoundException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					// Subir el fichero al servidor
@@ -359,14 +350,12 @@ public class ClienteFTP extends JFrame implements ActionListener {
 							sinpermiso();
 						}
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					// Cerramos el flujo
 					try {
 						in.close();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				} // Fin if APPROVE_OPTION
@@ -384,7 +373,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 				try {
 					cliente.setFileType(FTP.BINARY_FILE_TYPE);// que permite ficheros de cualquier tipo
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				// Elegimos el fichero que vamos a descargar del servidor
@@ -404,7 +392,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					try {
 						out = new BufferedOutputStream(new FileOutputStream(descarga));
 					} catch (FileNotFoundException e2) {
-						// TODO Auto-generated catch block
 						e2.printStackTrace();
 					}
 					// Descargar el fichero a nuestro equipo
@@ -418,14 +405,12 @@ public class ClienteFTP extends JFrame implements ActionListener {
 							sinpermiso();
 						}
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 					// Cerramos el flujo
 					try {
 						out.close();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				} // Fin if APPROVE_OPTION
@@ -443,7 +428,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 				try {
 					cliente.setFileType(FTP.BINARY_FILE_TYPE);// que permite ficheros de cualquier tipo
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				// Elegimos el fichero que vamos a eliminar del servidor
@@ -472,7 +456,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 								sinpermiso();
 							}
 						} catch (HeadlessException | IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					} else if (codigo == JOptionPane.NO_OPTION) {
@@ -509,7 +492,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 										JOptionPane.ERROR_MESSAGE);
 							}
 						} catch (HeadlessException | IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					} else {// Fin distinto de vacío
@@ -549,7 +531,6 @@ public class ClienteFTP extends JFrame implements ActionListener {
 										"No puedes borrar", JOptionPane.ERROR_MESSAGE);
 							}
 						} catch (HeadlessException | IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
 					} else {// Fin distinto de vacío
@@ -610,7 +591,7 @@ public class ClienteFTP extends JFrame implements ActionListener {
 		// Con la siguiente linea en servidor - Aquí he puesto la ruta del equipo en red
 		// en mi casa
 		// MUY IMPORTANTE Salon tiene que tener 4 barras - 2 de red y otras 2 de carpeta
-		 //String directorio = "\\\\Salon\\c\\xampp\\htdocs\\" + usuario + "\\miscosas";
+		// String directorio = "\\\\Salon\\c\\xampp\\htdocs\\" + usuario + "\\miscosas";
 		return directorio;
 	}
 
