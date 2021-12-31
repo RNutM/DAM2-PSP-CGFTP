@@ -285,7 +285,7 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					}
 					if (logout) {
 						System.out.println("Logout...");
-						icon = new ImageIcon("src/images/bye.png");
+						icon = new ImageIcon("./images/bye.png");
 						JOptionPane.showMessageDialog(null, "Esperamos que vuelvas pronto", "Sentimos que te vayas",
 								JOptionPane.INFORMATION_MESSAGE, icon);
 						login = false;// Dejo login de nuevo en false
@@ -341,7 +341,7 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					try {// Este es el nombre del fichero como queda después de subirlo
 							// if (cliente.storeFile("fichero.txt", in)) {
 						if (cliente.storeFile(sf, in)) {
-							icon = new ImageIcon("src/images/exito.jpg");
+							icon = new ImageIcon("./images/exito.jpg");
 							JOptionPane.showMessageDialog(null,
 									"Ya esta el fichero " + "***" + sf + "***" + " en el servidor",
 									"Fichero subido con éxito", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -397,7 +397,7 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					// Descargar el fichero a nuestro equipo
 					try {
 						if (cliente.retrieveFile(sf, out)) {
-							icon = new ImageIcon("src/images/exito.jpg");
+							icon = new ImageIcon("./images/exito.jpg");
 							JOptionPane.showMessageDialog(null,
 									"Ya esta el fichero " + "***" + sf + "***" + " en tu equipo",
 									"Fichero descargado con éxito", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -447,7 +447,7 @@ public class ClienteFTP extends JFrame implements ActionListener {
 						// Borramos el fichero del servidor FTP
 						try {
 							if (cliente.deleteFile(sf)) {
-								icon = new ImageIcon("src/images/exito.jpg");
+								icon = new ImageIcon("./images/exito.jpg");
 								JOptionPane.showMessageDialog(null,
 										"El fichero " + "***" + sf + "***" + " ha sido borrado del servidor FTP",
 										"Fichero borrado con éxito", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -482,7 +482,7 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					if (!direc.isEmpty()) {// Compruebo que el campo no esté vacío
 						try {
 							if (cliente.makeDirectory(direc)) {
-								icon = new ImageIcon("src/images/exito.jpg");
+								icon = new ImageIcon("./images/exito.jpg");
 								JOptionPane.showMessageDialog(null,
 										"El directorio " + "***" + direc + "***" + " ha sido creado con éxito",
 										"Directorio creado con éxito", JOptionPane.INFORMATION_MESSAGE, icon);
@@ -521,7 +521,7 @@ public class ClienteFTP extends JFrame implements ActionListener {
 					if (!direc.isEmpty()) {// Compruebo que el campo no esté vacío
 						try {
 							if (cliente.removeDirectory(direc)) {
-								icon = new ImageIcon("src/images/exito.jpg");
+								icon = new ImageIcon("./images/exito.jpg");
 								JOptionPane.showMessageDialog(null,
 										"El directorio " + "***" + direc + "***" + " ha sido borrado con éxito",
 										"Directorio borrado con éxito", JOptionPane.INFORMATION_MESSAGE, icon);
