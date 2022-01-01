@@ -596,6 +596,7 @@ public class ClienteFTP extends JFrame implements ActionListener {
 	}
 
 	// Método para verficheros
+	@SuppressWarnings("unused")
 	private void verficheros(FTPFile[] ficheros) throws IOException {
 		String tipo = "";
 
